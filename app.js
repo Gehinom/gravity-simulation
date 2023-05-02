@@ -9,29 +9,18 @@ document.addEventListener("click", handleMouseClick)
 
 function handleMouseClick(event) {
   const id = 'ball-' + ballNumber;
-let lastAddedBall = [balls.length - 1];
 
   let imgElement = document.createElement('img');
   imgElement.id = id;
   imgElement.src = "img/ball.gif";
   document.body.append(imgElement);
 
-  let lineElement = document.createElementNS("http://www.w3.org/2000/svg", 'line');
-  let svgElement = document.querySelector('svg');
-  lineElement.setAttribute('x1', event.x)
-  lineElement.setAttribute('y1', event.y)
-  lineElement.setAttribute('x2', lastAddedBall.x)
-  lineElement.setAttribute('y2', lastAddedBall.y)
-  lineElement.setAttribute('stroke', 'black')
-  svgElement.append(lineElement);
-  svgElement.setAttribute('viewBox', `0 0 ${window.innerWidth} ${window.innerHeight}`);
-
   const newBall = {
     x: event.x,
     y: event.y,
     width: 100,
     height: 100,
-    vx: 5,
+    vx: 0,
     vy: 0,
     element: document.querySelector('#' + id),
   }
